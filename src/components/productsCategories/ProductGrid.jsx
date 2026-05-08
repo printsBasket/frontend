@@ -31,14 +31,16 @@ const ProductGrid = ({ heading = "Products", products = [], enableFlowLayout = f
         e.preventDefault();
         e.stopPropagation();
         dispatch(addToCart(product.slug || product._id, 1));
-        navigate('/cart');
+        navigate('/cart/');
+
     };
 
     const handleBuyNow = (e, product) => {
         e.preventDefault();
         e.stopPropagation();
         dispatch(addToCart(product.slug || product._id, 1));
-        navigate('/cart');
+        navigate('/cart/');
+
     };
 
     return (
@@ -57,7 +59,7 @@ const ProductGrid = ({ heading = "Products", products = [], enableFlowLayout = f
                     return (
                         <Link
                             key={product._id || product.slug}
-                            to={product.link || `/product/${product.slug}`}
+                            to={product.link || `/product/${product.slug}/`}
                             className="group bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                         >
                             {/* Product Image Container */}

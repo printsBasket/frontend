@@ -5,7 +5,7 @@ import SEO from '../common/SEO';
 const PrivacyPolicy = () => {
   return (
     <section className="w-full bg-gradient-to-b from-blue-50 via-white to-blue-50 min-h-screen py-16">
-      <SEO title="Privacy Policy | Prints Basket" description="Learn how Prints Basket collects, uses, and protects your personal information. Read our full privacy policy for details on data practices." canonical="/privacy-policy" />
+      <SEO title="Privacy Policy | Prints Basket" description="Learn how Prints Basket collects, uses, and protects your personal information. Read our full privacy policy for details on data practices." canonical="/privacy-policy/" />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
         {/* Breadcrumb Navigation */}

@@ -307,7 +307,7 @@ const AboutUs = () => {
           <p className="text-xs sm:text-sm lg:text-base mb-6 sm:mb-8 opacity-95 max-w-2xl mx-auto">
             Discover a focused selection of quality printers backed by our commitment to accuracy, reliability, and clear communication.
           </p>
-          <Link to="/shop" className="inline-block bg-white text-blue-600 font-semibold px-6 sm:px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm sm:text-base">
+          <Link to="/shop/" className="inline-block bg-white text-blue-600 font-semibold px-6 sm:px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors text-sm sm:text-base">
             Shop Now
           </Link>
         </div>

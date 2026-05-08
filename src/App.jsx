@@ -10,6 +10,8 @@ import Footer from './components/Footer';
 import HomeMain from './components/home/HomeMain';
 import ScrollToTop from './components/ScrollToTop';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import TrailingSlashRedirect from './components/common/TrailingSlashRedirect';
+
 
 // Lazy loaded routes
 const ProfilePage = lazy(() => import('./components/profile/ProfilePage'));
@@ -80,7 +82,9 @@ function App() {
 
     return (
         <ImagePreloadProvider>
+        <TrailingSlashRedirect />
         <div className="flex flex-col min-h-screen">
+
             {!isAdminRoute && <Header />}
             <ScrollToTop />
 

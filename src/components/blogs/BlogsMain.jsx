@@ -73,7 +73,7 @@ const BlogsMain = () => {
             <SEO
                 title="Blog - Printer Tips & Guides"
                 description="Read expert articles on choosing printers, inkjet vs laser, print yields, wireless printing, and tips to extend your printer life."
-                canonical="/blogs"
+                canonical="/blogs/"
             />
             {/* Background Patterns */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
@@ -100,7 +100,7 @@ const BlogsMain = () => {
                         <article key={blog.id} className="bg-gradient-to-br from-white to-blue-50/30 rounded-3xl overflow-hidden shadow-lg shadow-blue-100/30 border-2 border-slate-100 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 group backdrop-blur-sm">
                             {/* Image */}
                             <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
-                                <Link to={`/blogs/${blog.slug}`}>
+                                <Link to={`/blogs/${blog.slug}/`}>
                                     <img
                                         src={blog.image}
                                         alt={blog.title}
@@ -126,7 +126,7 @@ const BlogsMain = () => {
                                     </span> */}
                                 </div>
 
-                                <Link to={`/blogs/${blog.slug}`}>
+                                <Link to={`/blogs/${blog.slug}/`}>
                                     <h2 className="text-lg md:text-xl font-black text-slate-900 mb-3 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-blue-600 group-hover:bg-clip-text group-hover:text-transparent transition-all line-clamp-2">
                                         {blog.title}
                                     </h2>
@@ -137,7 +137,7 @@ const BlogsMain = () => {
                                 </p>
 
                                 <Link
-                                    to={`/blogs/${blog.slug}`}
+                                    to={`/blogs/${blog.slug}/`}
                                     className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest group-hover:gap-4 transition-all"
                                 >
                                     Read Article <ArrowRight size={16} />

@@ -31,7 +31,7 @@ const Cart = () => {
         if (showAuth && userInfo) {
             setShowAuth(false);
             setShowLoginPrompt(false);
-            navigate('/checkout');
+            navigate('/checkout/');
         }
     }, [userInfo, showAuth, navigate]);
 
@@ -41,12 +41,12 @@ const Cart = () => {
             setShowAuth(true);
             return;
         }
-        navigate('/checkout');
+        navigate('/checkout/');
     };
 
     return (
         <div className="w-full min-h-screen py-6 sm:py-8 lg:py-10 bg-gradient-to-br from-slate-50 via-white to-blue-50/20">
-            <SEO title="Shopping Cart" description="Review items in your cart. Secure checkout with free shipping options." canonical="/cart" />
+            <SEO title="Shopping Cart" description="Review items in your cart. Secure checkout with free shipping options." canonical="/cart/" />
             {/* Background Patterns */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200/10 to-transparent rounded-full blur-3xl"></div>
@@ -109,7 +109,7 @@ const Cart = () => {
                                                     />
                                                 </div>
                                                 <div className="space-y-2 flex-1">
-                                                    <Link to={`/product/${item.slug}`} className="text-sm font-black text-slate-900 uppercase tracking-tight hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-600 hover:bg-clip-text hover:text-transparent transition-all line-clamp-2">
+                                                    <Link to={`/product/${item.slug}/`} className="text-sm font-black text-slate-900 uppercase tracking-tight hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-600 hover:bg-clip-text hover:text-transparent transition-all line-clamp-2">
                                                         {item.title}
                                                     </Link>
                                                     <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-2 py-1 rounded-full w-fit">✓ In Stock</p>

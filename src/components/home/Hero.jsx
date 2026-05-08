@@ -6,8 +6,9 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const handleViewCollection = () => {
-    navigate("/shop");
+    navigate("/shop/");
   };
+
 
   return (
     <section className="w-full mt-2 px-2 sm:px-4">

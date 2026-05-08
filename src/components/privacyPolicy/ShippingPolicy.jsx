@@ -5,7 +5,7 @@ import SEO from '../common/SEO';
 const ShippingPolicy = () => {
   return (
     <section className="w-full bg-gradient-to-b from-blue-50 via-white to-blue-50 min-h-screen py-16">
-      <SEO title="Shipping Policy | Prints Basket" description="Learn about Prints Basket shipping methods, delivery estimates, costs, and tracking for orders across the US and Canada." canonical="/shipping-policy" />
+      <SEO title="Shipping Policy | Prints Basket" description="Read our shipping policy for details on delivery times, shipping rates, and international shipping options." canonical="/shipping-policy/" />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
         {/* Breadcrumb Navigation */}

@@ -80,12 +80,12 @@ useEffect(() => {
         <div>
           <h3 className="font-semibold mb-4 text-base sm:text-lg">Policies</h3>
           <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
-            <li><Link to="/privacy-policy" className="hover:text-blue-400 transition">Privacy Policy</Link></li>
-            <li><Link to="/terms-and-conditions" className="hover:text-blue-400 transition">Terms & Conditions</Link></li>
-            <li><Link to="/return-exchange-policy" className="hover:text-blue-400 transition">Return & Exchange</Link></li>
-            <li><Link to="/shipping-policy" className="hover:text-blue-400 transition">Shipping Policy</Link></li>
-            <li><Link to="/cookie-policy" className="hover:text-blue-400 transition">Cookie Policy</Link></li>
-            <li><Link to="/refund-return-policy" className="hover:text-blue-400 transition">Refund Policy</Link></li>
+            <li><Link to="/privacy-policy/" className="hover:text-blue-400 transition">Privacy Policy</Link></li>
+            <li><Link to="/terms-and-conditions/" className="hover:text-blue-400 transition">Terms & Conditions</Link></li>
+            <li><Link to="/return-exchange-policy/" className="hover:text-blue-400 transition">Return & Exchange</Link></li>
+            <li><Link to="/shipping-policy/" className="hover:text-blue-400 transition">Shipping Policy</Link></li>
+            <li><Link to="/cookie-policy/" className="hover:text-blue-400 transition">Cookie Policy</Link></li>
+            <li><Link to="/refund-return-policy/" className="hover:text-blue-400 transition">Refund Policy</Link></li>
           </ul>
         </div>
 
@@ -93,12 +93,12 @@ useEffect(() => {
         <div>
           <h3 className="font-semibold mb-4 text-base sm:text-lg">Company</h3>
           <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
-            <li><Link to="/shop" className="hover:text-blue-400 transition">Shop</Link></li>
-            <li><Link to="/about" className="hover:text-blue-400 transition">About Us</Link></li>
-            <li><Link to="/blogs" className="hover:text-blue-400 transition">Blogs</Link></li>
-            <li><Link to="/faq" className="hover:text-blue-400 transition">FAQ</Link></li>
-            <li><Link to="/track-order" className="hover:text-blue-400 transition">Track Order</Link></li>
-            <li><Link to="/contact-us" className="hover:text-blue-400 transition">Support</Link></li>
+            <li><Link to="/shop/" className="hover:text-blue-400 transition">Shop</Link></li>
+            <li><Link to="/about/" className="hover:text-blue-400 transition">About Us</Link></li>
+            <li><Link to="/blogs/" className="hover:text-blue-400 transition">Blogs</Link></li>
+            <li><Link to="/faq/" className="hover:text-blue-400 transition">FAQ</Link></li>
+            <li><Link to="/track-order/" className="hover:text-blue-400 transition">Track Order</Link></li>
+            <li><Link to="/contact-us/" className="hover:text-blue-400 transition">Support</Link></li>
           </ul>
         </div>
 
@@ -154,15 +154,15 @@ useEffect(() => {
         <p>PrintsBasket © 2026. All rights reserved.</p>
 
         <div className="flex gap-4 flex-wrap justify-center sm:justify-end">
-          <Link to="/do-not-sell" className="hover:text-blue-400 transition">
+          <Link to="/do-not-sell/" className="hover:text-blue-400 transition">
             Do Not Sell
           </Link>
           <span className="text-gray-600">|</span>
-          <Link to="/eula" className="hover:text-blue-400 transition">
+          <Link to="/eula/" className="hover:text-blue-400 transition">
             EULA
           </Link>
           <span className="text-gray-600">|</span>
-          <Link to="/disclaimer" className="hover:text-blue-400 transition">
+          <Link to="/disclaimer/" className="hover:text-blue-400 transition">
             Disclaimer
           </Link>
         </div>

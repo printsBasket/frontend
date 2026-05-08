@@ -86,12 +86,12 @@ const ProductDetails = () => {
 
     const addToCartHandler = () => {
         dispatch(addToCart(product.slug || product._id, qty));
-        navigate('/cart');
+        navigate('/cart/');
     };
 
     const buyNowHandler = () => {
         dispatch(addToCart(product.slug || product._id, qty));
-        navigate('/cart');
+        navigate('/cart/');
     };
 
     const handleMouseEnter = () => {
@@ -157,7 +157,7 @@ const handleWriteReview = () => {
             <SEO
                 title={product.title}
                 description={product.description ? product.description.replace(/<[^>]*>/g, '').substring(0, 160) : `Buy ${product.title} at PrintsBasket. Best prices with free shipping.`}
-                canonical={`/product/${product.slug}`}
+                canonical={`/product/${product.slug}/`}
                 type="product"
             />
             {/* Background Patterns */}
@@ -260,11 +260,11 @@ const handleWriteReview = () => {
 
                         {/* Title */}
                         <div className="space-y-4">
-                            <div className="space-y-2">
-                                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent leading-tight tracking-tighter uppercase drop-shadow-lg">
+                            <div className="space-y-3">
+                                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent leading-tight tracking-tight drop-shadow-md">
                                     {product.title}
                                 </h1>
-                                <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
+                                <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"></div>
                             </div>
 
                         </div>
@@ -272,7 +272,7 @@ const handleWriteReview = () => {
                         {/* Short Details */}
                         {product.shortDetails && (
                             <div className="space-y-4 pb-6 border-b-2 border-slate-100">
-                                <h3 className="text-[11px] font-black bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent uppercase tracking-[0.3em]">Key Highlights</h3>
+                                <h3 className="text-[10px] font-black bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent uppercase tracking-[0.2em]">Key Highlights</h3>
                                 <div
                                     dangerouslySetInnerHTML={{ __html: product.shortDetails }}
                                     className="text-slate-600 text-sm font-medium leading-relaxed space-y-2 prose-sm prose-slate list-disc list-inside"
@@ -285,7 +285,7 @@ const handleWriteReview = () => {
                             {/* Price */}
                             <div className="space-y-3">
                                 <div className="flex items-baseline gap-3 sm:gap-4 flex-wrap">
-                                    <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent tracking-tighter">
+                                    <span className="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 bg-clip-text text-transparent tracking-tight">
                                         ${product.price?.toFixed(2)}
                                     </span>
                                 </div>
@@ -501,7 +501,7 @@ const handleWriteReview = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                             {relatedProducts.filter(p => p && p._id !== product._id && p.slug !== (product.slug || productSlug)).slice(0, 4).map((item) => (
                                 <Link 
-                                    to={`/product/${item.slug || item._id}`} 
+                                    to={`/product/${item.slug || item._id}/`} 
                                     key={item._id}
                                     className="group bg-white border-2 border-slate-100 rounded-3xl p-4 hover:shadow-lg hover:shadow-blue-200/30 hover:border-blue-200 transition-all duration-300 block"
                                     onClick={() => window.scrollTo(0, 0)}

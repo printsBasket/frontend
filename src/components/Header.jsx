@@ -57,15 +57,15 @@ const Header = () => {
               `${navItem} ${isActive ? "text-black after:w-full" : "hover:text-[#2364EB]"}`
             }>Home</NavLink>
 
-            <NavLink to="/about" className={({ isActive }) =>
+            <NavLink to="/about/" className={({ isActive }) =>
               `${navItem} ${isActive ? "text-black after:w-full" : "hover:text-[#2364EB]"}`
             }>About Us</NavLink>
 
-            <NavLink to="/shop" className={({ isActive }) =>
+            <NavLink to="/shop/" className={({ isActive }) =>
               `${navItem} ${isActive ? "text-black after:w-full" : "hover:text-[#2364EB]"}`
             }>Shop</NavLink>
 
-            <NavLink to="/contact-us" className={({ isActive }) =>
+            <NavLink to="/contact-us/" className={({ isActive }) =>
               `${navItem} ${isActive ? "text-black after:w-full" : "hover:text-[#2364EB]"}`
             }>Contact Us</NavLink>
           </nav>
@@ -109,7 +109,7 @@ const Header = () => {
                       </Link>
                     ) : (
                       <Link
-                        to="/profile"
+                        to="/profile/"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
                         onClick={() => setIsUserMenuOpen(false)}
                       >
@@ -132,7 +132,7 @@ const Header = () => {
             )}
 
             <div className="relative cursor-pointer">
-              <NavLink to="/cart" aria-label="Shopping cart"><ShoppingCart size={22} /></NavLink>
+              <NavLink to="/cart/" aria-label="Shopping cart"><ShoppingCart size={22} /></NavLink>
               {cartItems.length > 0 && (
                 <span className="absolute -top-2 -right-2 text-[10px] bg-blue-500 text-white px-1.5 rounded-full font-bold">
                   {cartItems.reduce((acc, item) => acc + item.qty, 0)}
@@ -166,9 +166,9 @@ const Header = () => {
             
             <nav className="flex flex-col gap-4 mt-8 flex-1">
               <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 font-medium hover:text-blue-500">Home</NavLink>
-              <NavLink to="/about" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 font-medium hover:text-blue-500">About Us</NavLink>
-              <NavLink to="/shop" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 font-medium hover:text-blue-500">Shop</NavLink>
-              <NavLink to="/contact-us" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 font-medium hover:text-blue-500">Contact Us</NavLink>
+              <NavLink to="/about/" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 font-medium hover:text-blue-500">About Us</NavLink>
+              <NavLink to="/shop/" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 font-medium hover:text-blue-500">Shop</NavLink>
+              <NavLink to="/contact-us/" onClick={() => setMobileMenuOpen(false)} className="text-gray-700 font-medium hover:text-blue-500">Contact Us</NavLink>
             </nav>
 
             {/* Mobile Profile Section */}
@@ -194,7 +194,7 @@ const Header = () => {
                     </Link>
                   ) : (
                     <Link
-                      to="/profile"
+                      to="/profile/"
                       onClick={() => setMobileMenuOpen(false)}
                       className="block w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors"
                     >

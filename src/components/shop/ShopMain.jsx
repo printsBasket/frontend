@@ -229,7 +229,7 @@ const ShopMain = ({ initialFilters }) => {
       <SEO
         title={`${pageTitle} - PrintsBasket`}
         description={`Browse our collection of ${pageTitle.toLowerCase()}. Filter by brand, technology, and price. Free shipping on orders.`}
-        canonical="/shop"
+        canonical="/shop/"
       />
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
@@ -640,7 +640,7 @@ const ShopMain = ({ initialFilters }) => {
                 {paginatedProducts.map((product) => (
                   <Link
                     key={product._id}
-                    to={`/product/${product.slug || product._id}`}
+                    to={`/product/${product.slug || product._id}/`}
                     className="group bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                   >
                     {/* Product Image Container */}
