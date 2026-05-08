@@ -9,6 +9,7 @@
     { "source": "/shop",        "destination": "/shop.html" },
     { "source": "/blogs",       "destination": "/blogs.html" },
     { "source": "/faq",         "destination": "/faq.html" },
-    { "source": "/(.*)",        "destination": "/index.html" }
+    { "source": "/manifest.json", "destination": "/manifest.json" },
+    { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
   ]
 }
