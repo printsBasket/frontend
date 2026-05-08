@@ -7,6 +7,7 @@ import { useImagePreload } from '../../lib/ImagePreloadContext';
 import ProductImage from '../common/ProductImage';
 import SEO from '../common/SEO';
 import ExploreCategoriesSection from '../home/ExploreCategoriesSection';
+import ProductsBanner from '../common/ProductsBanner';
 const ITEMS_PER_PAGE = 12;
 
 const ShopMain = ({ initialFilters }) => {
@@ -224,6 +225,21 @@ const ShopMain = ({ initialFilters }) => {
     pageTitle = `${selectedBrand} Printers`;
   }
 
+  // Determine banner based on current filters
+  const getBannerData = () => {
+    if (selectedUsageCategory.length === 1) {
+      if (selectedUsageCategory[0] === 'Home') return { desktop: "/shophome.webp", mobile: "/shophomemobile.webp", alt: "Home Printers Banner" };
+      if (selectedUsageCategory[0] === 'Office') return { desktop: "/shopoffice.webp", mobile: "/shopofficemobile.webp", alt: "Office Printers Banner" };
+    }
+    if (selectedTechnology) {
+      if (selectedTechnology === 'Inkjet') return { desktop: "/shopinkjet.webp", mobile: "/shoproutesmobile.webp", alt: "Inkjet Printers Banner" };
+      if (selectedTechnology.includes('Laser')) return { desktop: "/shoproutes.webp", mobile: "/shoproutesmobile.webp", alt: "Laser Printers Banner" };
+    }
+    return { desktop: "/shoproutes.webp", mobile: "/shoproutesmobile.webp", alt: "All Printers Banner" };
+  };
+
+  const bannerData = getBannerData();
+
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
@@ -231,6 +247,14 @@ const ShopMain = ({ initialFilters }) => {
         description={`Browse our collection of ${pageTitle.toLowerCase()}. Filter by brand, technology, and price. Free shipping on orders.`}
         canonical="/shop/"
       />
+
+      {/* Banner Section */}
+      <ProductsBanner
+        desktopImage={bannerData.desktop}
+        mobileImage={bannerData.mobile}
+        altText={bannerData.alt}
+      />
+
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-8 lg:py-12 text-center">
