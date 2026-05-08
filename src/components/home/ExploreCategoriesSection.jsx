@@ -33,11 +33,15 @@ const ExploreCategoriesSection = () => {
   ];
 
   const handleCategoryClick = (filter, filterType) => {
-    // Navigate to shop with the appropriate filter parameter
+    // Navigate to shop with the appropriate filter parameter or dedicated route
     if (filterType === 'usage') {
-      navigate(`/shop?usageCategory=${filter}`);
+      if (filter === "Home") navigate("/shop/home");
+      else if (filter === "Office") navigate("/shop/office");
+      else navigate(`/shop?usageCategory=${filter}`);
     } else if (filterType === 'technology') {
-      navigate(`/shop?technology=${filter}`);
+      if (filter === "Inkjet") navigate("/shop/inkjet");
+      else if (filter === "Laser") navigate("/shop/laser");
+      else navigate(`/shop?technology=${filter}`);
     }
   };
 

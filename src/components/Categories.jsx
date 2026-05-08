@@ -33,9 +33,13 @@ const Categories = () => {
 
   const handleCategoryClick = (filterType, filterValue) => {
     if (filterType === "usage") {
-      navigate(`/shop?usageCategory=${filterValue}`);
+      if (filterValue === "Home") navigate("/shop/home");
+      else if (filterValue === "Office") navigate("/shop/office");
+      else navigate(`/shop?usageCategory=${filterValue}`);
     } else if (filterType === "technology") {
-      navigate(`/shop?technology=${filterValue}`);
+      if (filterValue === "Inkjet") navigate("/shop/inkjet");
+      else if (filterValue === "Laser") navigate("/shop/laser");
+      else navigate(`/shop?technology=${filterValue}`);
     }
   };
 

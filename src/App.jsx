@@ -150,6 +150,10 @@ function App() {
 
                     {/* Placeholder Routes for Public Site */}
                     <Route path="/shop" element={<ShopMain />} />
+                    <Route path="/shop/home" element={<ShopMain initialFilters={{ usageCategory: 'Home' }} />} />
+                    <Route path="/shop/office" element={<ShopMain initialFilters={{ usageCategory: 'Office' }} />} />
+                    <Route path="/shop/inkjet" element={<ShopMain initialFilters={{ technology: 'Inkjet' }} />} />
+                    <Route path="/shop/laser" element={<ShopMain initialFilters={{ technology: 'Laser' }} />} />
 
                     {/* Catch-all */}
                     <Route path="*" element={<UnderConstruction />} />

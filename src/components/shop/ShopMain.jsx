@@ -6,19 +6,19 @@ import { fetchAllProducts } from '../../redux/actions/productActions';
 import { useImagePreload } from '../../lib/ImagePreloadContext';
 import ProductImage from '../common/ProductImage';
 import SEO from '../common/SEO';
-
+import ExploreCategoriesSection from '../home/ExploreCategoriesSection';
 const ITEMS_PER_PAGE = 12;
 
-const ShopMain = () => {
+const ShopMain = ({ initialFilters }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
-  const [selectedTechnology, setSelectedTechnology] = useState('');
-  const [selectedUsageCategory, setSelectedUsageCategory] = useState([]);
-  const [selectedWireless, setSelectedWireless] = useState('');
+  const [searchTerm, setSearchTerm] = useState(initialFilters?.search || '');
+  const [selectedBrand, setSelectedBrand] = useState(initialFilters?.brand || '');
+  const [selectedTechnology, setSelectedTechnology] = useState(initialFilters?.technology || '');
+  const [selectedUsageCategory, setSelectedUsageCategory] = useState(initialFilters?.usageCategory ? [initialFilters.usageCategory] : []);
+  const [selectedWireless, setSelectedWireless] = useState(initialFilters?.wireless || '');
   const [selectedMainFunction, setSelectedMainFunction] = useState([]);
   const [selectedRating, setSelectedRating] = useState(0);
   const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -90,10 +90,31 @@ const ShopMain = () => {
 
   const productsToShow = getFilteredProducts();
 
-  // Handle URL query parameters on mount
+  // Handle URL query parameters or initialFilters on mount
+  const initialFiltersStr = JSON.stringify(initialFilters || {});
+
   useEffect(() => {
+    if (initialFilters) {
+      if (initialFilters.search) setSearchTerm(initialFilters.search);
+      else setSearchTerm('');
+
+      if (initialFilters.technology) setSelectedTechnology(initialFilters.technology);
+      else setSelectedTechnology('');
+
+      if (initialFilters.usageCategory) setSelectedUsageCategory([initialFilters.usageCategory]);
+      else setSelectedUsageCategory([]);
+
+      if (initialFilters.brand) setSelectedBrand(initialFilters.brand);
+      else setSelectedBrand('');
+
+      if (initialFilters.wireless) setSelectedWireless(initialFilters.wireless);
+      else setSelectedWireless('');
+
+      return;
+    }
+
     const params = new URLSearchParams(location.search);
-    
+
     // Read URL parameters and set filters
     if (params.has('search')) {
       setSearchTerm(params.get('search'));
@@ -107,7 +128,7 @@ const ShopMain = () => {
     if (params.has('brand')) {
       setSelectedBrand(params.get('brand'));
     }
-  }, [location.search]);
+  }, [location.search, initialFiltersStr]);
 
   const handleUsageCategoryChange = (category) => {
     setSelectedUsageCategory((prev) =>
@@ -133,11 +154,11 @@ const ShopMain = () => {
 
   const clearFilters = () => {
     setSortBy('');
-    setSearchTerm('');
-    setSelectedBrand('');
-    setSelectedTechnology('');
-    setSelectedUsageCategory([]);
-    setSelectedWireless('');
+    setSearchTerm(initialFilters?.search || '');
+    setSelectedBrand(initialFilters?.brand || '');
+    setSelectedTechnology(initialFilters?.technology || '');
+    setSelectedUsageCategory(initialFilters?.usageCategory ? [initialFilters.usageCategory] : []);
+    setSelectedWireless(initialFilters?.wireless || '');
     setSelectedMainFunction([]);
     setSelectedRating(0);
     setPriceRange([0, 1000]);
@@ -150,9 +171,8 @@ const ShopMain = () => {
         {Array.from({ length: 5 }).map((_, i) => (
           <span
             key={i}
-            className={`text-xs ${
-              i < Math.round(rating || 0) ? 'text-yellow-400' : 'text-gray-300'
-            }`}
+            className={`text-xs ${i < Math.round(rating || 0) ? 'text-yellow-400' : 'text-gray-300'
+              }`}
           >
             ★
           </span>
@@ -194,12 +214,22 @@ const ShopMain = () => {
     priceRange[0] > 0 ||
     priceRange[1] < 1000;
 
+  // Determine dynamic page title based on active filters
+  let pageTitle = "Shop";
+  if (selectedUsageCategory.length === 1) {
+    pageTitle = `${selectedUsageCategory[0]} Printers`;
+  } else if (selectedTechnology) {
+    pageTitle = selectedTechnology === 'Laser (B/W)' ? 'Laser Printers (B/W)' : `${selectedTechnology} Printers`;
+  } else if (selectedBrand) {
+    pageTitle = `${selectedBrand} Printers`;
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-          title="Shop Printers & Supplies"
-          description="Browse our full collection of inkjet, laser, and all-in-one printers. Filter by brand, technology, and price. Free shipping on orders."
-          canonical="/shop"
+        title={`${pageTitle} - PrintsBasket`}
+        description={`Browse our collection of ${pageTitle.toLowerCase()}. Filter by brand, technology, and price. Free shipping on orders.`}
+        canonical="/shop"
       />
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
@@ -209,14 +239,15 @@ const ShopMain = () => {
               Home
             </Link>
             {' / '}
-            <span className="text-gray-800 font-medium">Shop</span>
+            <span className="text-gray-800 font-medium">{pageTitle}</span>
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600 mb-4">
-            Shop
+            {pageTitle}
           </h1>
           <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-blue-500 mx-auto"></div>
         </div>
       </div>
+      <ExploreCategoriesSection />
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-8 md:pt-12 lg:pt-20 pt-5">
@@ -529,9 +560,8 @@ const ShopMain = () => {
                       {Array.from({ length: 5 }).map((_, i) => (
                         <span
                           key={i}
-                          className={`text-sm ${
-                            i < star ? 'text-yellow-400' : 'text-gray-300'
-                          }`}
+                          className={`text-sm ${i < star ? 'text-yellow-400' : 'text-gray-300'
+                            }`}
                         >
                           ★
                         </span>
@@ -615,13 +645,13 @@ const ShopMain = () => {
                   >
                     {/* Product Image Container */}
                     <div className="relative bg-gray-50 aspect-[4/3] sm:aspect-square overflow-hidden flex items-center justify-center p-2.5 sm:p-3">
-                        <ProductImage
-                          src={getProductImageUrl(product) || '/assets/printer.png'}
-                          alt={product.title}
-                          width="320"
-                          height="320"
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                        />
+                      <ProductImage
+                        src={getProductImageUrl(product) || '/assets/printer.png'}
+                        alt={product.title}
+                        width="320"
+                        height="320"
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
 
 
                     </div>
@@ -684,11 +714,10 @@ const ShopMain = () => {
                       <button
                         key={pageNum}
                         onClick={() => setCurrentPage(pageNum)}
-                        className={`px-4 py-2 rounded-lg font-semibold transition ${
-                          currentPage === pageNum
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-600 text-white shadow-md'
-                            : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
-                        }`}
+                        className={`px-4 py-2 rounded-lg font-semibold transition ${currentPage === pageNum
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-600 text-white shadow-md'
+                          : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                          }`}
                       >
                         {pageNum}
                       </button>
@@ -971,9 +1000,8 @@ const ShopMain = () => {
                           {Array.from({ length: 5 }).map((_, i) => (
                             <span
                               key={i}
-                              className={`text-sm ${
-                                i < star ? 'text-yellow-400' : 'text-gray-300'
-                              }`}
+                              className={`text-sm ${i < star ? 'text-yellow-400' : 'text-gray-300'
+                                }`}
                             >
                               ★
                             </span>
