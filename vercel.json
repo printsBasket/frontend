@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/about",       "destination": "/about.html" },
+    { "source": "/contact-us",  "destination": "/contact-us.html" },
+    { "source": "/shop/home",   "destination": "/shop-home.html" },
+    { "source": "/shop/office", "destination": "/shop-office.html" },
+    { "source": "/shop/inkjet", "destination": "/shop-inkjet.html" },
+    { "source": "/shop/laser",  "destination": "/shop-laser.html" },
+    { "source": "/shop",        "destination": "/shop.html" },
+    { "source": "/blogs",       "destination": "/blogs.html" },
+    { "source": "/faq",         "destination": "/faq.html" },
+    { "source": "/(.*)",        "destination": "/index.html" }
+  ]
+}
