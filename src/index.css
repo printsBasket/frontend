@@ -1,9 +1,7 @@
+@import url('https://fonts.bunny.net/css?family=inter:400,500,600,700');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Inter Font Family - Bunny Fonts CDN (fastest, best cache headers) */
-@import url('https://fonts.bunny.net/css?family=inter:400,500,600,700');
 
 
 body {
