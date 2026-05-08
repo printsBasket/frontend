@@ -78,7 +78,7 @@ const Hero = () => {
             </p>
 
             <div className="flex justify-center md:justify-start">
-              <button 
+              <button
                 onClick={handleViewCollection}
                 className="bg-white text-[#0a1f5e] px-8 py-3 rounded-lg font-bold text-base hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
               >
