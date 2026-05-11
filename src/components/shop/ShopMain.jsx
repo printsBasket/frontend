@@ -232,8 +232,8 @@ const ShopMain = ({ initialFilters }) => {
       if (selectedUsageCategory[0] === 'Office') return { desktop: "/shopoffice.webp", mobile: "/shopofficemobile.webp", alt: "Office Printers Banner" };
     }
     if (selectedTechnology) {
-      if (selectedTechnology === 'Inkjet') return { desktop: "/shopinkjet.webp", mobile: "/shoproutesmobile.webp", alt: "Inkjet Printers Banner" };
-      if (selectedTechnology.includes('Laser')) return { desktop: "/shoproutes.webp", mobile: "/shoproutesmobile.webp", alt: "Laser Printers Banner" };
+      if (selectedTechnology === 'Inkjet') return { desktop: "/shopinkjet.webp", mobile: "/shopInkjetMobile.webp", alt: "Inkjet Printers Banner" };
+      if (selectedTechnology.includes('Laser')) return { desktop: "/shopLaser.webp", mobile: "/shopLaserMobile.webp", alt: "Laser Printers Banner" };
     }
     return { desktop: "/shoproutes.webp", mobile: "/shoproutesmobile.webp", alt: "All Printers Banner" };
   };
