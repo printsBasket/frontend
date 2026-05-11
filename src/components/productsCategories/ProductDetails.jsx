@@ -56,6 +56,9 @@ const ProductDetails = () => {
         ).slice(0, 8)
         : [];
 
+    const categoryName = (product?.category?.name || product?.category || '').toString().toLowerCase();
+    const isInkAndToner = categoryName.includes('ink') && categoryName.includes('toner');
+
     useEffect(() => {
         const checkEligibility = async () => {
             if (userInfo && product && product._id) {
@@ -351,7 +354,7 @@ const handleWriteReview = () => {
                         </div>
 
                         {/* Key Specs */}
-                        {(product.technology || product.mainFunction || product.wireless || product.shortSpecification) && (
+                        {(product.technology || product.mainFunction || product.wireless || product.shortSpecification) && !isInkAndToner && (
                             <div className="space-y-4">
                                 <h3 className="text-[11px] font-black bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent uppercase tracking-[0.3em]">Specifications</h3>
                                 <div className="flex flex-col gap-3">
